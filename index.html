@@ -1,0 +1,24 @@
+<head><meta charset="utf-8" />
+	<script src="jquery-1.11.3.min.js">></script>
+<script>
+$(document).ready(function(){
+  $("button").click(function(){
+    $("img").hide();
+  });
+});
+</script>
+</head>
+<html>
+<body bgcolor = '#278296'>
+<form action="ldap.php" method="post" align="center">
+<td align="center" >账号：<input type="text" name="username" /></td><p></p>
+<td>密码：<input type="password" type="text"  name="password" /></td><p></p>
+   <td colspan="2" align="center"><input type="submit" value="登陆" /></td>
+   <td colspan="2" align="center"><input type="reset" value="重置"/></td>
+</form>
+<button>点击这里隐藏图片</button>
+<p>点击这里隐藏</p>
+<img src="sample.jpg" align = "left">
+</body>
+</html>
+
