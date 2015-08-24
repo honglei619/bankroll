@@ -6,8 +6,6 @@
 <body>
 	<h1 align="center">查找结果</h1>
 	<?php
-	//引入背景色html文件
-	require("backgroundColor.html");
 	$searchtype = $_POST['searchtype'];
 	$searchterm = trim($_POST['searchterm']);
 
@@ -31,6 +29,7 @@
 	global $num_results;
 
 	$query = "SELECT * FROM `postdata` WHERE ".$searchtype." like '%".$searchterm."%'";
+	echo $query;
 	$result = $db -> query($query);
 	$num_results = $result ->num_rows;
 	echo "<p> 找到了 ".$num_results." 个结果"."</p>";
@@ -67,7 +66,6 @@
     </script>
 
 </head>
-    <body bgcolor = '#278296'>
   <table class="gridView" id="table1">
         <thead>
             <tr>
@@ -123,7 +121,7 @@
 		 		echo '</td>';
 		 		echo '<td>';
 		 		echo stripcslashes($row['state']);
-		 		echo '<t/d>';
+		 		echo '</td>';
 		 		echo '</tr>';
 		 	}
 		 	
@@ -149,7 +147,7 @@
 		 		echo '</td>';
 		 		echo '<td>';
 		 		echo stripcslashes($row['state']);
-		 		echo '<t/d>';
+		 		echo '</td>';
 		 		echo '</tr>';
 		 			}
 		 		

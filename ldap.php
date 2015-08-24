@@ -1,9 +1,6 @@
 <head><meta charset="utf-8" /></head>
 <?php
-require("backgroundColor.html");
-require("search.html");
-$myArray = array('line one.','line two.','line three.');
-CreatTable($myArray);
+require("menu.html");
 $dn = trim($_POST["username"]."@wilmar.cn");
 $password =trim($_POST["password"]);
 
@@ -22,6 +19,7 @@ if(!empty($dn) && !empty($password) ){
         echo '登陆成功！';
         echo "</p>";
         echo $_POST["username"].' 您好，'.'当前时间是 ' .date('H:i,jS F Y');
+        require("insert.html");
     }
     else
     {
