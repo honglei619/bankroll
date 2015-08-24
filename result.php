@@ -29,7 +29,7 @@
 	global $num_results;
 
 	$query = "SELECT * FROM `postdata` WHERE ".$searchtype." like '%".$searchterm."%'";
-	echo $query;
+	//echo $query;
 	$result = $db -> query($query);
 	$num_results = $result ->num_rows;
 	echo "<p> 找到了 ".$num_results." 个结果"."</p>";
