@@ -10,10 +10,8 @@ $loginUser = trim($_POST["username"]);
 $password =trim($_POST["password"]);
 
 date_default_timezone_set("Asia/Shanghai");
-global $chineseName;
-
-//向其他页面传递登陆的用户名
-setcookie('loginUserName',trim($loginUser));
+//global $chineseName;
+//global $userID;
 
 if(!empty($dn) && !empty($password) ){
     //local server
@@ -39,8 +37,10 @@ if(!empty($dn) && !empty($password) ){
          $row = $result ->fetch_assoc();
         //echo stripcslashes($row['chineseName'])."</p>";
         $chineseName = stripcslashes($row['chineseName']);
+        $loginUserID = stripcslashes($row['userID']);
     }
-
+    //向其他页面传递登陆的用户名的ID
+    setcookie('loginUserNameID',"$loginUserID");
     if (is_null($ldapbind) || is_null($chineseName)){
     
         //echo '登陆失败，请检查是否有系统权限或用户名密码！';
@@ -53,6 +53,7 @@ if(!empty($dn) && !empty($password) ){
         echo '登陆成功！';
         echo "</p>";
         echo $chineseName.' 您好，'.'当前时间是 ' .date('H:i,jS F Y');
+        //echo "userID 是".$loginUserID."</br>";
         
     }
 }
