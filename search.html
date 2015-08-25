@@ -1,15 +1,22 @@
 <head><meta charset="utf-8" /></head>
-<html>
 <head>
 	<title>查询</title>
 </head>
+<head>
+<link href="images/style.css" rel="stylesheet" type="text/css" />
+</head>
 <body>
-	<h1 align="center">查询页面</h1>
-	<?php
-		require("menu.html");
-	?>
-
-	
+<p>&nbsp;</p>
+<ul id="nav">
+          <li><a href="insert.html">填写资金计划</a></li>
+          <li><a href="search.html">历史查询</a></li>
+          <li><a href="">供应商维护</a></li>
+          <li><a href="">考核</a></li>
+          <li><a href="profile">我的资料</a></li>
+</ul>
+</body>
+</html>
+<body>
 	<form action = "result.php" method = "post">
 		查询列标题:<br />
 		<select name = "searchtype">

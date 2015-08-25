@@ -1,11 +1,11 @@
 <head><meta charset="utf-8" /></head>
 <html>
 <head>
-	<title>Report Search Result</title>
+	<title>查找结果</title>
 </head>
 <body>
-	<h1 align="center">查找结果</h1>
 	<?php
+	require("navigation.html");
 	$searchtype = $_POST['searchtype'];
 	$searchterm = trim($_POST['searchterm']);
 
@@ -32,7 +32,7 @@
 	//echo $query;
 	$result = $db -> query($query);
 	$num_results = $result ->num_rows;
-	echo "<p> 找到了 ".$num_results." 个结果"."</p>";
+	//echo "<p> 找到了 ".$num_results." 个结果"."</p>";
 /*
 	for ($i=0; $i < $num_results; $i++) { 
 		global $row;

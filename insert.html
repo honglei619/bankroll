@@ -1,6 +1,19 @@
 <head><meta charset="utf-8" />
 	<title>提交报表</title>
 </head>
+<head>
+<link href="images/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<p>&nbsp;</p>
+<ul id="nav">
+          <li><a href="insert.html">填写资金计划</a></li>
+          <li><a href="search.html">历史查询</a></li>
+          <li><a href="">供应商维护</a></li>
+          <li><a href="">考核</a></li>
+          <li><a href="profile">我的资料</a></li>
+</ul>
+</body>
 <html>
 	<body>
 		<h1 align="center">
@@ -8,31 +21,31 @@
 		<form action ="insert.php" method = "post">
 				<table border = "0">
 					<tr>
-						付款日期:
+						<font size = "3">付款日期:</font>
 						<input type = "text" name = "date" maxlength = "20" size = "10">
 					</tr>
 					<tr>
-						类别:
+						<font size = "3">类别:</font>
 						<input type = "text" name = "type" maxlength = "20" size = "10">
 					</tr>
 					<tr>
-						公司名称:
+						<font size = "3">公司名称:</font>
 						<input type = "text" name = "company" maxlength = "20" size = "25">
 					</tr>
 					<tr>
-						原因:
+						<font size = "3">原因:</font>
 						<input type = "text" name = "reason" maxlength = "20" size = "15">
 					</tr>
 					<tr>
-						金额:
+						<font size = "3">金额:</font>
 						<input type = "text" name = "money" maxlength = "20" size = "10">
 					</tr>
 					<tr>
-						状态:
+						<font size = "3">状态:</font>
 						<input type = "text" name = "state" maxlength = "20" size = "5">
 					</tr>
 					<tr>
-						<td colspan = '8'><input type = "submit" value = '提交'></td>
+						<input type = "submit" value = '提交' style="font-size:14px">
 					</tr>
 				</table>
 		</form>
