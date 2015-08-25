@@ -38,6 +38,9 @@ if(!empty($dn) && !empty($password) ){
         //echo stripcslashes($row['chineseName'])."</p>";
         $chineseName = stripcslashes($row['chineseName']);
         $loginUserID = stripcslashes($row['userID']);
+        $department = stripcslashes($row['department']);
+        $privilege = stripcslashes($row['privilege']);
+        $score = stripcslashes($row['score']);
     }
     //向其他页面传递登陆的用户名的ID
     setcookie('loginUserNameID',"$loginUserID");
