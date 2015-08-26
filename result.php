@@ -33,39 +33,17 @@
 	$result = $db -> query($query);
 	$num_results = $result ->num_rows;
 	//echo "<p> 找到了 ".$num_results." 个结果"."</p>";
-/*
-	for ($i=0; $i < $num_results; $i++) { 
-		global $row;
-		 $row = $result ->fetch_assoc();
-		echo stripcslashes($row['id'])."</p>";
-		echo stripcslashes($row['date'])."</p>";
-		echo stripcslashes($row['type'])."</p>";
-		echo stripcslashes($row['company'])."</p>";
-		echo stripcslashes($row['reason'])."</p>";
-		echo stripcslashes($row['money'])."</p>";
-		echo stripcslashes($row['state'])."</p>";
-		echo stripcslashes($row['userID'])."</p>";
-	}
-*/
-	//$result -> free();
-	//$db ->close();
 	?>
 
-</body>
-</html>
-
-<head><meta charset="utf-8" />
-    <script src="js/jquery-1.9.1.js"></script>
+    <script src="js/jquery-1.11.3.min.js"></script>
     <script type="text/javascript" src="js/jquery.freezeheader.js"></script>
       <link rel="stylesheet" type="text/css" href="css/style.css" />
  <script language="javascript" type="text/javascript">
 
         $(document).ready(function () {
-            $("#table1").freezeHeader({ 'height': '400px' });  
+            $("#table1").freezeHeader({ 'height': '420px' });  
         })
     </script>
-
-</head>
   <table class="gridView" id="table1">
         <thead>
             <tr>
@@ -158,3 +136,4 @@
         </tbody>
     </table>
 </body>
+</html>
