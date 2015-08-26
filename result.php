@@ -68,6 +68,9 @@
                 </th>
                  <th>
                     付款状态
+                </th> 
+                <th>
+                    提交时间
                 </th>               
             </tr>
         </thead>
@@ -100,6 +103,9 @@
 		 		echo '<td>';
 		 		echo stripcslashes($row['state']);
 		 		echo '</td>';
+		 		echo '<td>';
+		 		echo stripcslashes($row['insert_date']);
+		 		echo '</td>';
 		 		echo '</tr>';
 		 	}
 		 	
@@ -125,6 +131,9 @@
 		 		echo '</td>';
 		 		echo '<td>';
 		 		echo stripcslashes($row['state']);
+		 		echo '</td>';
+		 		echo '<td>';
+		 		echo stripcslashes($row['insert_date']);
 		 		echo '</td>';
 		 		echo '</tr>';
 		 			}

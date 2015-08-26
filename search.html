@@ -20,11 +20,15 @@
 	<form action = "result.php" method = "post">
 		查询列标题:<br />
 		<select name = "searchtype">
-			<option value = "type">"类别"</option>
-			<option value = "reason">"原因"</option>
+			<option value = "date">支付时间</option>
+			<option value = "type">类别</option>
+			<option value = "company">公司名称</option>
+			<option value = "reason">原因</option>
+			<option value = "money">金额</option>
+			<option value = "state">状态</option>
+			<option value = "insert_date">提交时间</option>		
 		</select>
-		<br \>
-		输入查询关键字<br \>
+		<br \>输入查询关键字<br \>
 		<input name = "searchterm" type="text" size = "20"/>
 		<br />
 		<input type ="submit" name = "submit" value = "查询"/>

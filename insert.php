@@ -9,6 +9,7 @@
 <!-- www.divcss5.com -->
 		<?php
 			require("navigation.html");
+			date_default_timezone_set("Asia/Shanghai");
 			 //$id = $_POST[''];
 			 $date = $_POST['date'];
 			 $type = $_POST['type'];
@@ -17,6 +18,7 @@
 			 $money = $_POST['money'];
 			 $state = $_POST['state'];
 			 $userID = $_COOKIE['loginUserNameID'];
+			 $insert_date = date("Y-m-d H:i:sa");
 			 //echo "</br>--".$userID."-----</br>";
 			 //无法获取userID时指定一个错误号ID
 			 if(is_null($userID)){
@@ -50,7 +52,7 @@
 			exit;
 			}
 
-			$query = "INSERT INTO `postdata`(`date`, `type`, `company`, `reason`, `money`, `state`, `userID`) VALUES ('".$date."','".$type."','".$company."','".$reason."','".$money."','".$state."','".$userID."')";
+			$query = "INSERT INTO `postdata`(`date`, `type`, `company`, `reason`, `money`, `state`,`insert_date`, `userID`) VALUES ('".$date."','".$type."','".$company."','".$reason."','".$money."','".$state."','". $insert_date."','".$userID."')";
 			$result = $db->query($query);
 			if ($result) {
 				echo '<font size = "3" color=#008B00>'.'提交成功!'. '</font>';
