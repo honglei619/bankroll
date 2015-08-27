@@ -3,6 +3,7 @@
 </head>
 <?php
  require("navigation.html");
+require_once 'connectvars.php';
 //require("backgroundColor.html");
 //require("search.html");
 $dn = trim($_POST["username"]."@wilmar.cn");
@@ -21,7 +22,7 @@ if(!empty($dn) && !empty($password) ){
     @$ldapbind = ldap_bind($ldapconn,$dn,$password);
 
     //connect to database
-    @ $db = new mysqli('localhost','root','','bankroll');
+    @ $db = new mysqli(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
 
     if (mysqli_connect_errno()) {
         echo "无法连接数据库!";

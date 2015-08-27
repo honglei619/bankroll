@@ -1,6 +1,6 @@
 <head>
 	<meta charset="utf-8" />
-	<link href="images/style.css" rel="stylesheet" type="text/css" />
+	<link href="css/nav.css" rel="stylesheet" type="text/css" />
 </head>
 <html>
 	<title>
@@ -9,6 +9,7 @@
 <!-- www.divcss5.com -->
 		<?php
 			require("navigation.html");
+			require_once 'connectvars.php';
 			date_default_timezone_set("Asia/Shanghai");
 			 //$id = $_POST[''];
 			 $date = $_POST['date'];
@@ -45,7 +46,7 @@
 
 			 }
 
-			 @ $db = new mysqli('localhost','root','','bankroll');
+			 @ $db = new mysqli(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
 
 			if (mysqli_connect_errno()) {
 			echo "数据库连接出错！";

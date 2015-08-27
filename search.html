@@ -1,24 +1,25 @@
 <head><meta charset="utf-8" /></head>
 <head>
 	<title>查询</title>
-</head>
-<head>
-<link href="images/style.css" rel="stylesheet" type="text/css" />
+	&nbsp;
+
+		<link href="css/nav.css" rel="stylesheet" type="text/css" />
+
 </head>
 <body>
-<p>&nbsp;</p>
-<ul id="nav">
+	<ul id="nav">
           <li><a href="insert.html">填写资金计划</a></li>
           <li><a href="search.html">历史查询</a></li>
           <li><a href="">供应商维护</a></li>
           <li><a href="">考核</a></li>
-          <li><a href="profile">我的资料</a></li>
+          <li><a href="userinfo.html">我的资料</a></li>
 </ul>
 </body>
+<p>&nbsp;</p>
 </html>
 <body>
-	<form action = "result.php" method = "post">
-		查询列标题:<br />
+	<form action = "search.php" method = "post">
+		查询列标题:
 		<select name = "searchtype">
 			<option value = "date">支付时间</option>
 			<option value = "type">类别</option>
@@ -28,9 +29,8 @@
 			<option value = "state">状态</option>
 			<option value = "insert_date">提交时间</option>		
 		</select>
-		<br \>输入查询关键字<br \>
+		输入查询关键字:
 		<input name = "searchterm" type="text" size = "20"/>
-		<br />
 		<input type ="submit" name = "submit" value = "查询"/>
 	</form>	
 </body>
