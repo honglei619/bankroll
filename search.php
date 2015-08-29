@@ -6,6 +6,8 @@
 <body>
 	<?php
 	require("navigation.html");
+    require_once 'connectvars.php';
+
 	$searchtype = $_POST['searchtype'];
 	$searchterm = trim($_POST['searchterm']);
 
@@ -18,20 +20,26 @@
 		$searchtype = addslashes($searchtype);
 		$searchterm = addslashes($searchterm);
 	}
-	@ $db = new mysqli('localhost','root','','bankroll');
+@ $db = new mysqli(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
 
 	if (mysqli_connect_errno()) {
 		echo "could not connect to db";
 		exit;
 	}
-	global $query;
-	global $result;
-	global $num_results;
+	//global $query;
+	//global $result;
+	//global $num_results;
 
 	$query = "SELECT * FROM `postdata` WHERE ".$searchtype." like '%".$searchterm."%'";
-	//echo $query;
 	$result = $db -> query($query);
 	$num_results = $result ->num_rows;
+
+	$sum_query = "SELECT sum(money) FROM `postdata` WHERE ".$searchtype." like '%".$searchterm."%'";
+	//echo $sum_query."</br>";
+	$sum_result = $db -> query($sum_query);
+	$sum_num_results = $sum_result ->num_rows;
+
+	$sum = $sum_result ->fetch_assoc();
 	//echo "<p> 找到了 ".$num_results." 个结果"."</p>";
 	?>
 
@@ -139,6 +147,62 @@
 		 			}
 		 		
 			}
+			if($num_results %2 ==0){
+				echo '<tr class="grid">';
+		 		echo '<td>';
+		 		echo '<b>汇总</b>';
+		 		echo '</td>';
+			 	echo '<td>';
+		 		echo '';
+		 		echo '</td>';
+		 		echo '<td>';
+		 		echo '';
+		 		echo '</td>';
+		 		echo '<td>';
+		 		echo '';
+		 		echo '</td>';
+		 		echo '<td>';
+		 		echo '';
+		 		echo '</td>';
+		 		echo '<td>';
+		 		echo $sum['sum(money)'];
+		 		echo '</td>';
+		 		echo '<td>';
+		 		echo '';
+		 		echo '</td>';
+		 		echo '<td>';
+		 		echo '';
+		 		echo '</td>';
+		 		echo '</tr>';
+			}else{
+				echo '<tr class="gridAlternada">';
+		 		echo '<td>';
+		 		echo '<b>汇总</b>';
+		 		echo '</td>';
+			 	echo '<td>';
+		 		echo '';
+		 		echo '</td>';
+		 		echo '<td>';
+		 		echo '';
+		 		echo '</td>';
+		 		echo '<td>';
+		 		echo '';
+		 		echo '</td>';
+		 		echo '<td>';
+		 		echo '';
+		 		echo '</td>';
+		 		echo '<td>';
+		 		echo $sum['sum(money)'];
+		 		echo '</td>';
+		 		echo '<td>';
+		 		echo '';
+		 		echo '</td>';
+		 		echo '<td>';
+		 		echo '';
+		 		echo '</td>';
+		 		echo '</tr>';
+			}
+				
 	$result -> free();
 	$db ->close();
             ?>
