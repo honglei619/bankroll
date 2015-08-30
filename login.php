@@ -22,6 +22,6 @@ if (isset($_SESSION['valie_user'])){
         echo '	<p></p>';
         echo '<a href="logout.php">'.'<font size = "3">'.'退出登录'. '</font>'.'</a>';
 }else{
-	echo "用户名或密码错误，请重试";
-	echo '<a href="index.html">'.'<font size = "3">'.'返回'. '</font>'.'</a>';
+        echo   '<script language="javascript">'.'window.location= "error.html";'.'</script>';
+
 }

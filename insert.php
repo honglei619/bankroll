@@ -7,6 +7,9 @@
 		提交结果
 	</title>
 		<?php
+
+			session_start();
+if (isset($_SESSION['valie_user'])){
 			require("navigation.html");
 			require_once 'connectvars.php';
 			date_default_timezone_set("Asia/Shanghai");
@@ -61,6 +64,11 @@
 				echo "数据提交出错，请重试";
 			}
 			$db->close();
+}else{
+
+        echo   '<script language="javascript">'.'window.location= "error.html";'.'</script>';
+
+}
 		?>
 
 	</body>

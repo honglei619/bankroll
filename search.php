@@ -5,6 +5,9 @@
 </head>
 <body>
 	<?php
+		session_start();
+	if (isset($_SESSION['valie_user'])){
+
 	require("navigation.html");
     require_once 'connectvars.php';
     //取得userID，返回的查找结果只允许出现此登录用户提交的数据；
@@ -50,7 +53,13 @@
 	$sum_num_results = $sum_result ->num_rows;
 
 	$sum = $sum_result ->fetch_assoc();
-	//echo "<p> 找到了 ".$num_results." 个结果"."</p>";
+		//echo "<p> 找到了 ".$num_results." 个结果"."</p>";
+}else{
+
+        echo   '<script language="javascript">'.'window.location= "error.html";'.'</script>';
+
+}
+
 	?>
 
     <script src="js/jquery-1.11.3.min.js"></script>
@@ -89,7 +98,10 @@
                 </th> 
                 <th>
                     提交时间
-                </th>               
+                </th>
+                <th>
+                    提交人
+                </th>                
             </tr>
         </thead>
         <tbody>

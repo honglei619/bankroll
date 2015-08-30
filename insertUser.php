@@ -7,6 +7,8 @@
 		提交结果
 	</title>
 		<?php
+			session_start();
+if (isset($_SESSION['valie_user'])){
 			require("navigation.html");
 			require_once 'connectvars.php';
 			//date_default_timezone_set("Asia/Shanghai");
@@ -46,9 +48,15 @@
 			echo "数据库连接出错！";
 			exit;
 			}
+			//对用户做权限判断
+			if ($privilege > =3 ) {
 
 			$query = "INSERT INTO `user`(`domainUsername`, `chineseName`, `department`, `userID`, `privilege`, `score`) VALUES ('".$domainUsername."','".$chineseName."','".$department."','".$userID."','".$privilege."','".$score."')";
 			$result = $db->query($query);
+
+			}else{
+				echo "用户权限不足，请查证！";
+			}
 			if ($result) {
 				echo '<font size = "3" color=#008B00>'.'提交成功!'. '</font>';
 				echo "</p>";
@@ -57,6 +65,11 @@
 				echo "数据提交出错，请重试";
 			}
 			$db->close();
+}else{
+
+        echo   '<script language="javascript">'.'window.location= "error.html";'.'</script>';
+
+}
 		?>
 
 	</body>

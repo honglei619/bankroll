@@ -36,6 +36,8 @@
         </thead>
         <tbody>
 <?php
+    session_start();
+if (isset($_SESSION['valie_user'])){
     require("navigation.html");
     require_once 'connectvars.php';
     $userID      = $_COOKIE['loginUserNameID'];
@@ -67,11 +69,19 @@
 		 		echo '</td>';
 		 		echo '</tr>';
                 */
-                if($privilege >=3){
-                echo '<li><a href="insertUser.html">添加用户</a></li>';
-                }
+}else{
+
+        echo   '<script language="javascript">'.'window.location= "error.html";'.'</script>';
+
+}
             ?>
         </tbody>
     </table>
+<?php
+    echo '<p>&nbsp;</p>';
+    if($privilege >=3){
+        echo '<a href="insertUser.html"><button type="button">添加用户</button></a>';
+    }
+ ?>               
 </body>
 </html>
