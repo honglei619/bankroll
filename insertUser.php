@@ -9,7 +9,7 @@
 		<?php
 			require("navigation.html");
 			require_once 'connectvars.php';
-			date_default_timezone_set("Asia/Shanghai");
+			//date_default_timezone_set("Asia/Shanghai");
 			 //$id = $_POST[''];
 			 $domainUsername = $_POST['domainUsername'];
 			 $chineseName = $_POST['chineseName'];
@@ -18,7 +18,7 @@
 			 $privilege = $_POST['privilege'];
 			 $score = $_POST['score'];
 			 //$userID = $_COOKIE['loginUserNameID'];
-			 $insert_date = date("Y-m-d H:i:sa");
+			 //$insert_date = date("Y-m-d H:i:sa");
 			 
 
 

@@ -2,17 +2,13 @@
     <meta charset="utf-8" />
 </head>
 <?php
- require("navigation.html");
+//设置会话保存时间，15分钟
+ session_set_cookie_params(900); 
+session_start();
 require_once 'connectvars.php';
-//require("backgroundColor.html");
-//require("search.html");
 $dn = trim($_POST["username"]."@wilmar.cn");
 $loginUser = trim($_POST["username"]);
 $password =trim($_POST["password"]);
-
-date_default_timezone_set("Asia/Shanghai");
-//global $chineseName;
-//global $userID;
 
 if(!empty($dn) && !empty($password) ){
     //local server
@@ -28,7 +24,6 @@ if(!empty($dn) && !empty($password) ){
         echo "无法连接数据库!";
         exit;
     }
-    //$queryPostdata = "SELECT * FROM `user` WHERE `userID`= ";
     $queryUser = "SELECT * FROM `user` WHERE `domainUsername`= '$loginUser' ";
     //echo $queryUser;
     $result = $db -> query($queryUser);
@@ -57,16 +52,21 @@ if(!empty($dn) && !empty($password) ){
 
         
     }
-    else
+    elseif($ldapbind)
     {
+        $_SESSION['valie_user'] = $loginUser;
+        echo   '<script language="javascript">'.'window.location= "login.php";'.'</script>';
+/*
         echo '登陆成功！';
         echo "</p>";
         echo $chineseName.' 您好，'.'当前时间是 ' .date('H:i,jS F Y');
         //echo "userID 是".$loginUserID."</br>";
-        
+ */       
+    }else{
+        echo   '<script language="javascript">'.'window.location= "error.html";'.'</script>';
     }
 }
 else{
-    echo '用户名或密码不能为空！';
+    echo "用户名或密码不能为空!";
 }
 ?>

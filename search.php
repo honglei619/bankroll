@@ -7,7 +7,10 @@
 	<?php
 	require("navigation.html");
     require_once 'connectvars.php';
-
+    //取得userID，返回的查找结果只允许出现此登录用户提交的数据；
+    $userID     = $_COOKIE['loginUserNameID'];
+    //取得当前用户登陆权限，根据不同用户权限返回不同查询结果
+    $privilege   = $_COOKIE['privilege'];
 	$searchtype = $_POST['searchtype'];
 	$searchterm = trim($_POST['searchterm']);
 
@@ -26,12 +29,22 @@
 		echo "could not connect to db";
 		exit;
 	}
+	//添加权限判断
+	if ($privilege >1) {
 
 	$query = "SELECT * FROM `postdata` WHERE ".$searchtype." like '%".$searchterm."%'";
+	$sum_query = "SELECT sum(money) FROM `postdata` WHERE  ".$searchtype." like '%".$searchterm."%'";
+
+	}else{
+
+		$query = "SELECT * FROM `postdata` WHERE `userID`= ".$userID." and ".$searchtype." like '%".$searchterm."%'";
+		$sum_query = "SELECT sum(money) FROM `postdata` WHERE `userID`= ".$userID." and ".$searchtype." like '%".$searchterm."%'";
+
+	}
+	
 	$result = $db -> query($query);
 	$num_results = $result ->num_rows;
 
-	$sum_query = "SELECT sum(money) FROM `postdata` WHERE ".$searchtype." like '%".$searchterm."%'";
 	//echo $sum_query."</br>";
 	$sum_result = $db -> query($sum_query);
 	$sum_num_results = $sum_result ->num_rows;
