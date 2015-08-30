@@ -45,6 +45,11 @@ if(!empty($dn) && !empty($password) ){
     }
     //向其他页面传递登陆的用户名的ID
     setcookie('loginUserNameID',"$loginUserID");
+    setcookie('domainUsername',"$loginUser");
+    setcookie('chineseName',"$chineseName");
+    setcookie('department',"$department");
+    setcookie('privilege',"$privilege");
+    setcookie('score',"$score");
     if (is_null($ldapbind) || is_null($chineseName)){
     
         //echo '登陆失败，请检查是否有系统权限或用户名密码！';

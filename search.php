@@ -26,9 +26,6 @@
 		echo "could not connect to db";
 		exit;
 	}
-	//global $query;
-	//global $result;
-	//global $num_results;
 
 	$query = "SELECT * FROM `postdata` WHERE ".$searchtype." like '%".$searchterm."%'";
 	$result = $db -> query($query);

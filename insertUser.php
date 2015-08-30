@@ -11,36 +11,32 @@
 			require_once 'connectvars.php';
 			date_default_timezone_set("Asia/Shanghai");
 			 //$id = $_POST[''];
-			 $date = $_POST['date'];
-			 $type = $_POST['type'];
-			 $company = $_POST['company'];
-			 $reason = $_POST['reason'];
-			 $money = $_POST['money'];
-			 $state = $_POST['state'];
-			 $userID = $_COOKIE['loginUserNameID'];
+			 $domainUsername = $_POST['domainUsername'];
+			 $chineseName = $_POST['chineseName'];
+			 $department = $_POST['department'];
+			 $userID = $_POST['userID'];
+			 $privilege = $_POST['privilege'];
+			 $score = $_POST['score'];
+			 //$userID = $_COOKIE['loginUserNameID'];
 			 $insert_date = date("Y-m-d H:i:sa");
-			 //无法获取userID时指定一个错误号ID
-			 if(is_null($userID)){
-			 	$userID = 120;
-			 }
 			 
 
 
-			 if (!$date || !$type || !$company || !$reason || !$money || !$state || !$userID) {
+			 if (!$domainUsername || !$chineseName || !$department || !$userID || !$privilege || !$score) {
 			 	echo '<font size = "3" color="#FF0000">'.'请检查各项目是否填写数据!'.'</font>';
 			 	echo "</p>";
-				echo '<a href="insert.html">'.'<font size = "3">'.'返回'. '</font>'.'</a>';
+				echo '<a href="insertUser.html">'.'<font size = "3">'.'返回'. '</font>'.'</a>';
 			 	exit;
 			 }
 
 			 if (!get_magic_quotes_gpc()) {
 
-			 $date = addslashes($date);
-			 $type = addslashes($type);
-			 $company = addslashes($company);
-			 $reason = addslashes($reason);
-			 $money =addslashes($money);
-			 $state = addslashes($state);
+			 $domainUsername = addslashes($domainUsername);
+			 $chineseName = addslashes($chineseName);
+			 $department = addslashes($department);
+			 $userID = addslashes($userID);
+			 $privilege =addslashes($privilege);
+			 $score = addslashes($score);
 
 			 }
 
@@ -51,7 +47,7 @@
 			exit;
 			}
 
-			$query = "INSERT INTO `postdata`(`date`, `type`, `company`, `reason`, `money`, `state`,`insert_date`, `userID`) VALUES ('".$date."','".$type."','".$company."','".$reason."','".$money."','".$state."','". $insert_date."','".$userID."')";
+			$query = "INSERT INTO `user`(`domainUsername`, `chineseName`, `department`, `userID`, `privilege`, `score`) VALUES ('".$domainUsername."','".$chineseName."','".$department."','".$userID."','".$privilege."','".$score."')";
 			$result = $db->query($query);
 			if ($result) {
 				echo '<font size = "3" color=#008B00>'.'提交成功!'. '</font>';
