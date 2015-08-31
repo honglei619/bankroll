@@ -49,7 +49,7 @@ if (isset($_SESSION['valie_user'])){
 			exit;
 			}
 			//对用户做权限判断,使用cookie传入的权限代码
-			if ($_COOKIE['privilege'] > =3 ) {
+			if ($_COOKIE['privilege'] >= 3 ) {
 
 			$query = "INSERT INTO `user`(`domainUsername`, `chineseName`, `department`, `userID`, `privilege`, `score`) VALUES ('".$domainUsername."','".$chineseName."','".$department."','".$userID."','".$privilege."','".$score."')";
 			$result = $db->query($query);
