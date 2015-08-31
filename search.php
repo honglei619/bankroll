@@ -5,6 +5,7 @@
 </head>
 <body>
 	<?php
+	//将查询条件列表化，日期加入日期间隔，日期输入框代入日期标准库
 		session_start();
 	if (isset($_SESSION['valie_user'])){
 
