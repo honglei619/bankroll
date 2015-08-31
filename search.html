@@ -11,7 +11,7 @@
 		<li><a href="login.php">主页</a></li>
           <li><a href="insert.html">填写资金计划</a></li>
           <li><a href="search.html">历史查询</a></li>
-          <li><a href="nsertcompany.html">付款方维护</a></li>
+          <li><a href="insertcompany.html">付款方维护</a></li>
           <li><a href="">考核</a></li>
           <li><a href="userinfo.php">我的资料</a></li>
 </ul>
@@ -20,8 +20,9 @@
 </html>
 <body>
 	<form action = "search.php" method = "post">
-		查询列标题:
-		<select name = "searchtype">
+		<font size = "3">查询列标题:</font>
+		&nbsp;
+		<select name = "searchtype" style="font-size:20px">
 			<option value = "date">支付时间</option>
 			<option value = "type">类别</option>
 			<option value = "company">公司名称</option>
@@ -30,9 +31,11 @@
 			<option value = "state">状态</option>
 			<option value = "insert_date">提交时间</option>		
 		</select>
-		输入查询关键字:
+		&nbsp;
+		<font size = "3">查询关键字:</font>
 		<input name = "searchterm" type="text" size = "20"/>
-		<input type ="submit" name = "submit" value = "查询"/>
+		&nbsp;
+		<input type ="submit" name = "submit" value = "查询" style="font-size:20px"/>
 	</form>	
 </body>
 </html>
