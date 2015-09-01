@@ -38,13 +38,6 @@
             $insert_date_to = "2099-12-31";
         }
 
-
-        /*
-            if (!$searchtype || !$searchtype) {
-                echo "try again";
-                exit;
-            }
-        */
 	if (!get_magic_quotes_gpc()) {
         $date_from = addslashes($date_from);
         $date_to = addslashes($date_to);
@@ -67,9 +60,9 @@
 	if ($_COOKIE['privilege'] >1) {
 
 	$query = "SELECT * FROM `postdata` WHERE `insert_date`BETWEEN '$insert_date_from' AND '$insert_date_to' and `date`BETWEEN '$date_from' AND '$date_to'  and `type` like '%".$type."%' and `company` like '%".$company."%' and `reason` like '%".$reason."%' and `money` like '%".$money."%' and `state` like '%".$state."%'";
-	echo $query;
+	//echo $query;
         $sum_query = "SELECT sum(money) FROM `postdata` WHERE  `insert_date`BETWEEN '$insert_date_from' AND '$insert_date_to' and `date`BETWEEN '$date_from' AND '$date_to' and `type` like '%".$type."%' and `company` like '%".$company."%' and `reason` like '%".$reason."%' and `money` like '%".$money."%' and `state` like '%".$state."%'";
-    echo '------'.$sum_query.'-----';
+    //echo '------'.$sum_query.'-----';
 	}else{
 
 		$query = "SELECT * FROM `postdata` WHERE `userID`= ".$userID." and ".$searchtype." like '%".$searchterm."%'";
@@ -85,7 +78,7 @@
 	$sum_num_results = $sum_result ->num_rows;
 
 	$sum = $sum_result ->fetch_assoc();
-        echo "<p> 找到了 ".$num_results." 个结果"."</p>";
+        //echo "<p> 找到了 ".$num_results." 个结果"."</p>";
 }else{
 
         echo   '<script language="javascript">'.'window.location= "error.html";'.'</script>';
@@ -106,6 +99,9 @@
   <table class="gridView" id="table1">
         <thead>
             <tr>
+                <th>
+
+                </th>
             	<th>
                    序号
                 </th>
@@ -144,6 +140,9 @@
 		 	$row = $result ->fetch_assoc();
 		 	if($i % 2 == 0){
 		 		echo ' <tr class="grid">';
+                echo '<td>';
+                echo '<input name="result" type="checkbox" value="" />';
+                echo '</td>';
 		 		echo '<td>';
 		 		echo stripcslashes($i+1);
 		 		echo '</td>';
@@ -173,6 +172,9 @@
 		 	
 		 		else{
 		 		echo '<tr class="gridAlternada">';
+                    echo '<td>';
+                    echo '<input name="result" type="checkbox" value="" />';
+                    echo '</td>';
 		 		echo '<td>';
 		 		echo stripcslashes($i+1);
 		 		echo '</td>';
