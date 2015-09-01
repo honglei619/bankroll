@@ -46,7 +46,12 @@ require_once 'connectvars.php';
 	if (isset($_SESSION['valie_user'])) {
         $userID = $_COOKIE['loginUserNameID'];
         @ $db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+        if ($_COOKIE['privilege']>=3) {
+            $query = "SELECT * FROM `b_company_name` WHERE '1'";
+        }else{
         $query = "SELECT * FROM `b_company_name` WHERE `userID` = '$userID' ";
+        }
+        
         $result = $db->query($query);
         $num_results = $result->num_rows;
 

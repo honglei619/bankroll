@@ -14,7 +14,7 @@ if (isset($_SESSION['valie_user'])){
 			require_once 'connectvars.php';
 			date_default_timezone_set("Asia/Shanghai");
 			 //$id = $_POST[''];
-			 $company = $_POST['company'];
+			 $company = trim($_POST['company']);
 			 $userID  = $_COOKIE['loginUserNameID'];
 			 //无法获取userID时指定一个错误号ID
 			 if(is_null($userID)){
@@ -42,12 +42,11 @@ if (isset($_SESSION['valie_user'])){
 			if (mysqli_connect_errno()) {
 			echo "数据库连接出错！";
 			exit;
-			}
 
 			$query = "INSERT INTO `b_company_name`( `company`,`userID`) VALUES ('".$company."','".$userID."')";
 			$result = $db->query($query);
 			if ($result) {
-				echo '<font size = "3" color=#008B00>'.'提交成功!'. '</font>';
+				echo '<font size = "3" color=#008B00>'.'添加成功!'. '</font>';
 				echo "</p>";
 				echo '<a href="insertcompany.html">'.'<font size = "3">'.'返回'. '</font>'.'</a>';
 			}else{
