@@ -14,19 +14,49 @@
     //取得userID，返回的查找结果只允许出现此登录用户提交的数据；
     $userID     = $_COOKIE['loginUserNameID'];
     //取得当前用户登陆权限，根据不同用户权限返回不同查询结果
-    $privilege   = $_COOKIE['privilege'];
-	$searchtype = $_POST['searchtype'];
-	$searchterm = trim($_POST['searchterm']);
+    $privilege  = $_COOKIE['privilege'];
+        $date_from = $_POST['date_from'];
+        $date_to   = $_POST['date_to'];
+        $type      = $_POST['type'];
+        $company   = $_POST['company'];
+        $reason    = $_POST['reason'];
+        $money     = $_POST['money'];
+        $state     = $_POST['state'];
+        $insert_date_from = $_POST['insert_date_from'];
+        $insert_date_to = $_POST['insert_date_to'];
+        //当用户提交空白日期时手动指定一个日期
+        if($date_from == ''){
+            $date_from = "0000-00-00";
+        }
+        if($date_to == ''){
+            $date_to = "2099-12-31";
+        }
+        if($insert_date_from == ''){
+            $insert_date_from = "0000-00-00";
+        }
+        if($insert_date_to == ''){
+            $insert_date_to = "2099-12-31";
+        }
 
-	if (!$searchtype || !$searchtype) {
-		echo "try again";
-		exit;
-	}
 
+        /*
+            if (!$searchtype || !$searchtype) {
+                echo "try again";
+                exit;
+            }
+        */
 	if (!get_magic_quotes_gpc()) {
-		$searchtype = addslashes($searchtype);
-		$searchterm = addslashes($searchterm);
+        $date_from = addslashes($date_from);
+        $date_to = addslashes($date_to);
+        $type = addslashes($type);
+        $company = addslashes($company);
+        $reason = addslashes($reason);
+        $money =addslashes($money);
+        $state = addslashes($state);
+        $insert_date_from =addslashes($insert_date_from);
+        $insert_date_to = addslashes($insert_date_to);
 	}
+
 @ $db = new mysqli(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
 
 	if (mysqli_connect_errno()) {
@@ -34,11 +64,12 @@
 		exit;
 	}
 	//添加权限判断
-	if ($privilege >1) {
+	if ($_COOKIE['privilege'] >1) {
 
-	$query = "SELECT * FROM `postdata` WHERE ".$searchtype." like '%".$searchterm."%'";
-	$sum_query = "SELECT sum(money) FROM `postdata` WHERE  ".$searchtype." like '%".$searchterm."%'";
-
+	$query = "SELECT * FROM `postdata` WHERE `insert_date`BETWEEN '$insert_date_from' AND '$insert_date_to' and `date`BETWEEN '$date_from' AND '$date_to'  and `type` like '%".$type."%' and `company` like '%".$company."%' and `reason` like '%".$reason."%' and `money` like '%".$money."%' and `state` like '%".$state."%'";
+	echo $query;
+        $sum_query = "SELECT sum(money) FROM `postdata` WHERE  `insert_date`BETWEEN '$insert_date_from' AND '$insert_date_to' and `date`BETWEEN '$date_from' AND '$date_to' and `type` like '%".$type."%' and `company` like '%".$company."%' and `reason` like '%".$reason."%' and `money` like '%".$money."%' and `state` like '%".$state."%'";
+    echo '------'.$sum_query.'-----';
 	}else{
 
 		$query = "SELECT * FROM `postdata` WHERE `userID`= ".$userID." and ".$searchtype." like '%".$searchterm."%'";
@@ -54,7 +85,7 @@
 	$sum_num_results = $sum_result ->num_rows;
 
 	$sum = $sum_result ->fetch_assoc();
-		//echo "<p> 找到了 ".$num_results." 个结果"."</p>";
+        echo "<p> 找到了 ".$num_results." 个结果"."</p>";
 }else{
 
         echo   '<script language="javascript">'.'window.location= "error.html";'.'</script>';

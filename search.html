@@ -20,20 +20,46 @@
 </html>
 <body>
 	<form action = "search.php" method = "post">
-		<font size = "3">查询列标题:</font>
-		&nbsp;
-		<select name = "searchtype" style="font-size:20px">
-			<option value = "date">支付时间</option>
-			<option value = "type">类别</option>
-			<option value = "company">公司名称</option>
-			<option value = "reason">原因</option>
-			<option value = "money">金额</option>
-			<option value = "state">状态</option>
-			<option value = "insert_date">提交时间</option>		
-		</select>
-		&nbsp;
-		<font size = "3">查询关键字:</font>
-		<input name = "searchterm" type="text" size = "20"/>
+        <table border = "0"  align="center">
+            <tr>
+                <font size = "3">付款日期:</font>
+                <input type = "text" name = "date_from" maxlength = "15" size = "10">
+                ~
+                <input type = "text" name = "date_to" maxlength = "15" size = "10">
+            </tr>
+            &nbsp;
+            <tr>
+                <font size = "3">类别:</font>
+                <input type = "text" name = "type" maxlength = "20" size = "10">
+            </tr>
+            &nbsp;
+            </table>
+        <table align="center" >
+            <tr>
+                <font size = "3">公司名称:</font>
+                <input type = "text" name = "company" maxlength = "20" size = "25">
+            </tr>
+            &nbsp;
+            <tr>
+                <font size = "3">原因:</font>
+                <input type = "text" name = "reason" maxlength = "20" size = "15">
+            </tr>
+            <tr>
+                <font size = "3">金额:</font>
+                <input type = "text" name = "money" maxlength = "20" size = "10">
+            </tr>
+            <tr>
+                <font size = "3">状态:</font>
+                <input type = "text" name = "state" maxlength = "20" size = "5">
+            </tr>
+            <tr>
+                <font size = "3">提交时间:</font>
+                <input type = "text" name = "insert_date_from" maxlength = "20" size = "5">
+                ~
+                <input type = "text" name = "insert_date_to" maxlength = "20" size = "5">
+
+            </tr>
+        </table>
 		<p>&nbsp;</p>
 		<input type ="submit" name = "submit" value = "查询" style="font-size:20px"/>
 	</form>	
