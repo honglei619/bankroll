@@ -42,6 +42,7 @@ if (isset($_SESSION['valie_user'])){
 			if (mysqli_connect_errno()) {
 			echo "数据库连接出错！";
 			exit;
+			}
 
 			$query = "INSERT INTO `b_company_name`( `company`,`userID`) VALUES ('".$company."','".$userID."')";
 			$result = $db->query($query);
@@ -58,6 +59,7 @@ if (isset($_SESSION['valie_user'])){
         echo   '<script language="javascript">'.'window.location= "error.html";'.'</script>';
 
 }
+
 		?>
 
 	</body>

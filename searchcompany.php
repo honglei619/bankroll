@@ -1,13 +1,14 @@
 <head><meta charset="utf-8" /></head>
 <html>
 <head>
-    <title>用户信息</title>
+<title>用户信息</title>
 </head>
 <body>
 <script src="js/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="js/jquery.freezeheader.js"></script>
 <link rel="stylesheet" type="text/css" href="css/style.css" />
 <script language="javascript" type="text/javascript"></script>
+<form name="checkform" action="deletecompany.php" method="POST">
 <table class="gridView" id="table1">
     <thead>
     <tr>
@@ -60,12 +61,13 @@ require_once 'connectvars.php';
 
             $row = $result->fetch_assoc();
             if ($i % 2 == 0) {
+
                 echo ' <tr class="grid">';
                 echo '<td>';
-                echo '<input name="result" type="checkbox" value="" />';
+                echo '<input name="checked_name[]" type="checkbox" value='.$row['id'].' />';
                 echo '</td>';
                 echo '<td>';
-                echo stripcslashes($row['id']);
+                echo stripcslashes($i+1);
                 echo '</td>';
                 echo '<td>';
                 echo stripcslashes($row['company']);
@@ -73,12 +75,12 @@ require_once 'connectvars.php';
                 echo '<td>';
                 echo '</tr>';
             } else {
-                echo ' <tr class="grid">';
+                echo ' <tr class="gridAlternada">';
                 echo '<td>';
-                echo '<input name="result" type="checkbox" value="" />';
+                echo '<input name="checked_name[]" type="checkbox" value='.$row['id'].' />';
                 echo '</td>';
                 echo '<td>';
-                echo stripcslashes($row['id']);
+                echo stripcslashes($i+1);
                 echo '</td>';
                 echo '<td>';
                 echo stripcslashes($row['company']);
@@ -87,7 +89,14 @@ require_once 'connectvars.php';
                 echo '</tr>';
             }
         }
+        
         $result->free();
         $db->close();
     }
-	
+?>
+</body>
+<input type="submit" name="subbtn" value="删除" />
+
+</form>
+</html>	
+

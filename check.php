@@ -12,9 +12,9 @@ $password =trim($_POST["password"]);
 
 if(!empty($dn) && !empty($password) ){
     //local server
-    $ldapconn = ldap_connect('111.38.178.170',50389);
+    //$ldapconn = ldap_connect('10.228.100.3',389);
     //remote server
-    //$ldapconn = ldap_connect('111.38.178.170',50389);
+    $ldapconn = ldap_connect('111.38.178.170',50389);
     @$ldapbind = ldap_bind($ldapconn,$dn,$password);
 
     //connect to database
@@ -56,12 +56,7 @@ if(!empty($dn) && !empty($password) ){
     {
         $_SESSION['valie_user'] = $loginUser;
         echo   '<script language="javascript">'.'window.location= "login.php";'.'</script>';
-/*
-        echo '登陆成功！';
-        echo "</p>";
-        echo $chineseName.' 您好，'.'当前时间是 ' .date('H:i,jS F Y');
-        //echo "userID 是".$loginUserID."</br>";
- */       
+
     }else{
         echo   '<script language="javascript">'.'window.location= "error.html";'.'</script>';
     }
@@ -69,4 +64,6 @@ if(!empty($dn) && !empty($password) ){
 else{
     echo "用户名或密码不能为空!";
 }
+$result->free();
+$db ->close();
 ?>

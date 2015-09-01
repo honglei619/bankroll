@@ -61,12 +61,13 @@
 
 	$query = "SELECT * FROM `postdata` WHERE `insert_date`BETWEEN '$insert_date_from' AND '$insert_date_to' and `date`BETWEEN '$date_from' AND '$date_to'  and `type` like '%".$type."%' and `company` like '%".$company."%' and `reason` like '%".$reason."%' and `money` like '%".$money."%' and `state` like '%".$state."%'";
 	//echo $query;
-        $sum_query = "SELECT sum(money) FROM `postdata` WHERE  `insert_date`BETWEEN '$insert_date_from' AND '$insert_date_to' and `date`BETWEEN '$date_from' AND '$date_to' and `type` like '%".$type."%' and `company` like '%".$company."%' and `reason` like '%".$reason."%' and `money` like '%".$money."%' and `state` like '%".$state."%'";
+    $sum_query = "SELECT sum(money) FROM `postdata` WHERE  `insert_date`BETWEEN '$insert_date_from' AND '$insert_date_to' and `date`BETWEEN '$date_from' AND '$date_to' and `type` like '%".$type."%' and `company` like '%".$company."%' and `reason` like '%".$reason."%' and `money` like '%".$money."%' and `state` like '%".$state."%'";
     //echo '------'.$sum_query.'-----';
 	}else{
 
-		$query = "SELECT * FROM `postdata` WHERE `userID`= ".$userID." and ".$searchtype." like '%".$searchterm."%'";
-		$sum_query = "SELECT sum(money) FROM `postdata` WHERE `userID`= ".$userID." and ".$searchtype." like '%".$searchterm."%'";
+	$query = "SELECT * FROM `postdata` WHERE `userID`= ".$userID." and  `insert_date`BETWEEN '$insert_date_from' AND '$insert_date_to' and `date`BETWEEN '$date_from' AND '$date_to'  and `type` like '%".$type."%' and `company` like '%".$company."%' and `reason` like '%".$reason."%' and `money` like '%".$money."%' and `state` like '%".$state."%'";
+	//echo $query;
+    $sum_query = "SELECT sum(money) FROM  `postdata` WHERE `userID`= ".$userID." and  `insert_date`BETWEEN '$insert_date_from' AND '$insert_date_to' and `date`BETWEEN '$date_from' AND '$date_to' and `type` like '%".$type."%' and `company` like '%".$company."%' and `reason` like '%".$reason."%' and `money` like '%".$money."%' and `state` like '%".$state."%'";
 
 	}
 	
@@ -76,7 +77,6 @@
 	//echo $sum_query."</br>";
 	$sum_result = $db -> query($sum_query);
 	$sum_num_results = $sum_result ->num_rows;
-
 	$sum = $sum_result ->fetch_assoc();
         //echo "<p> 找到了 ".$num_results." 个结果"."</p>";
 }else{
@@ -96,6 +96,7 @@
             $("#table1").freezeHeader({ 'height': '420px' });  
         })
     </script>
+ <form name="checkform" action="deletesearch.php" method="POST">
   <table class="gridView" id="table1">
         <thead>
             <tr>
@@ -135,15 +136,22 @@
         <tbody>
         	<?php
 
+
         	for ($i=0; $i < $num_results; $i++) { 
 
 		 	$row = $result ->fetch_assoc();
+		 	//通过userID查找user表中记录的对应的中文名，并取出
+		 	$userID = $row['userID'];
+		 	$get_chinese_name_sql = "SELECT `chineseName` FROM `user` WHERE `userID`= '$userID' ";
+		 	$get_chinese_name = $db ->query($get_chinese_name_sql);
+		 	$row2 = $get_chinese_name ->fetch_assoc();
 		 	if($i % 2 == 0){
 		 		echo ' <tr class="grid">';
                 echo '<td>';
-                echo '<input name="result" type="checkbox" value="" />';
-                echo '</td>';
-		 		echo '<td>';
+                //id赋值给checked_name数组，通过表单POST到deletesearch.php页面
+                echo '<input name="checked_name[]" type="checkbox" value='.$row['id'].' />';
+                echo '</td>';		 		
+                echo '<td>';
 		 		echo stripcslashes($i+1);
 		 		echo '</td>';
 		 		echo '<td>';
@@ -167,15 +175,18 @@
 		 		echo '<td>';
 		 		echo stripcslashes($row['insert_date']);
 		 		echo '</td>';
+		 		echo '<td>';
+		 		echo stripcslashes($row2['chineseName']);
+		 		echo '</td>';
 		 		echo '</tr>';
 		 	}
 		 	
 		 		else{
 		 		echo '<tr class="gridAlternada">';
-                    echo '<td>';
-                    echo '<input name="result" type="checkbox" value="" />';
-                    echo '</td>';
-		 		echo '<td>';
+                echo '<td>';
+                echo '<input name="checked_name[]" type="checkbox" value='.$row['id'].' />';
+                echo '</td>';		 		
+                echo '<td>';
 		 		echo stripcslashes($i+1);
 		 		echo '</td>';
 			 	echo '<td>';
@@ -198,6 +209,9 @@
 		 		echo '</td>';
 		 		echo '<td>';
 		 		echo stripcslashes($row['insert_date']);
+		 		echo '</td>';
+		 		echo '<td>';
+		 		echo stripcslashes($row2['chineseName']);
 		 		echo '</td>';
 		 		echo '</tr>';
 		 			}
@@ -222,6 +236,12 @@
 		 		echo '</td>';
 		 		echo '<td>';
 		 		echo $sum['sum(money)'];
+		 		echo '</td>';
+		 		echo '<td>';
+		 		echo '';
+		 		echo '</td>';
+		 		echo '<td>';
+		 		echo '';
 		 		echo '</td>';
 		 		echo '<td>';
 		 		echo '';
@@ -256,13 +276,22 @@
 		 		echo '<td>';
 		 		echo '';
 		 		echo '</td>';
+		 		echo '<td>';
+		 		echo '';
+		 		echo '</td>';
+		 		echo '<td>';
+		 		echo '';
+		 		echo '</td>';
 		 		echo '</tr>';
 			}
+
 				
 	$result -> free();
 	$db ->close();
             ?>
         </tbody>
     </table>
+<input type="submit" name="subbtn" value="删除" />
+</form>
 </body>
 </html>
