@@ -25,16 +25,16 @@
         $insert_date_from = $_POST['insert_date_from'];
         $insert_date_to = $_POST['insert_date_to'];
         //当用户提交空白日期时手动指定一个日期
-        if($date_from == ''){
+        if(trim($date_from) == ''){
             $date_from = "0000-00-00";
         }
-        if($date_to == ''){
+        if(trim($date_to) == ''){
             $date_to = "2099-12-31";
         }
-        if($insert_date_from == ''){
+        if(trim($insert_date_from) == ''){
             $insert_date_from = "0000-00-00";
         }
-        if($insert_date_to == ''){
+        if(trim($insert_date_to) == ''){
             $insert_date_to = "2099-12-31";
         }
 
