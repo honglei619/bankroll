@@ -4,6 +4,7 @@
 <?php
 //设置会话保存时间，15分钟
 session_start();
+if (isset($_SESSION['valie_user'])){
 require_once 'connectvars.php';
 require("navigation.html");
     @ $db = new mysqli(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
@@ -16,6 +17,11 @@ require("navigation.html");
     //echo $queryUser;
     $result = $db -> query($queryUser);
     $num_results = $result ->num_rows;
+}else{
+
+        echo   '<script language="javascript">'.'window.location= "error.html";'.'</script>';
+
+}
     ?>
 <script src="js/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="js/jquery.freezeheader.js"></script>
