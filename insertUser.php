@@ -60,7 +60,7 @@ if (isset($_SESSION['valie_user'])){
 			if ($result) {
 				echo '<font size = "3" color=#008B00>'.'提交成功!'. '</font>';
 				echo "</p>";
-				echo '<a href="insert.html">'.'<font size = "3">'.'返回'. '</font>'.'</a>';
+				echo '<a href="insertUser.html">'.'<font size = "3">'.'返回'. '</font>'.'</a>';
 			}else{
 				echo "数据提交出错，请重试";
 			}
