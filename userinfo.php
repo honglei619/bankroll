@@ -24,10 +24,11 @@
                 <th>
                     分数
                 </th>
-                <!---
+               
                 <th>
                 	用户ID号
                 </th>
+                 <!---
                 <th>
                     权限
                 </th> 
@@ -60,11 +61,11 @@ if (isset($_SESSION['valie_user'])){
 		 		echo '<td>';
 		 		echo $score;
 		 		echo '</td>';
-                /*
 		 		echo '<td>';
 		 		echo $userID;
 		 		echo '</td>';
 		 		echo '<td>';
+                /*
 		 		echo $privilege;
 		 		echo '</td>';
 		 		echo '</tr>';
@@ -81,6 +82,8 @@ if (isset($_SESSION['valie_user'])){
     echo '<p>&nbsp;</p>';
     if($privilege >=3){
         echo '<a href="insertUser.html"><button type="button">添加用户</button></a>';
+        echo '&nbsp';
+        echo '<a href="searchUser.php"><button type="button">查询用户</button></a>';
     }
  ?>               
 </body>
