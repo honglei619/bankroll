@@ -6,6 +6,10 @@
 		<link href="css/nav.css" rel="stylesheet" type="text/css" />
 
 </head>
+<script language="javascript" type="text/javascript" src="My97DatePicker/WdatePicker.js"></script>
+
+
+
 <body>
 	<ul id="nav">
 		<li><a href="login.php">主页</a></li>
@@ -23,9 +27,14 @@
         <table border = "0"  align="center">
             <tr>
                 <font size = "3">付款日期:</font>
+                <input class="Wdate" type="text" name = "date_from" maxlength = "15" size = "13" onClick="WdatePicker()">
+                ~
+                 <input class="Wdate" type="text" name = "date_to" maxlength = "15" size = "13" onClick="WdatePicker()">
+<!--
                 <input type = "text" name = "date_from" maxlength = "15" size = "10">
                 ~
                 <input type = "text" name = "date_to" maxlength = "15" size = "10">
+            -->
             </tr>
             &nbsp;
             <tr>
@@ -44,20 +53,22 @@
                 <font size = "3">原因:</font>
                 <input type = "text" name = "reason" maxlength = "20" size = "15">
             </tr>
+            &nbsp;
             <tr>
                 <font size = "3">金额:</font>
                 <input type = "text" name = "money" maxlength = "20" size = "10">
             </tr>
+            &nbsp;
             <tr>
                 <font size = "3">状态:</font>
                 <input type = "text" name = "state" maxlength = "20" size = "5">
             </tr>
+            &nbsp;
             <tr>
                 <font size = "3">提交时间:</font>
-                <input type = "text" name = "insert_date_from" maxlength = "20" size = "5">
+               <input class="Wdate" type="text" name = "insert_date_from" maxlength = "15" size = "13" onClick="WdatePicker()">
                 ~
-                <input type = "text" name = "insert_date_to" maxlength = "20" size = "5">
-
+                 <input class="Wdate" type="text" name = "insert_date_to" maxlength = "15" size = "13" onClick="WdatePicker()">
             </tr>
         </table>
 		<p>&nbsp;</p>
