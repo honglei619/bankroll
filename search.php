@@ -291,7 +291,9 @@
             ?>
         </tbody>
     </table>
-<input type="submit" name="subbtn" value="删除" />
+    <p>&nbsp</p>
+<input type="submit" name="delete_button" value="删除" />
+<input type="submit" name="update_button" value ="修改" />
 </form>
 </body>
 </html>
