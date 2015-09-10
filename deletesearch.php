@@ -56,14 +56,14 @@ if (isset($_SESSION['valie_user'])){
     echo   '<script language="javascript">'.'window.location= "update.php";'.'</script>';
 
 	
-			}/*
+			}
 			else{
 				echo "请勿选择多列数据进行修改";
 				echo '</br>';
 				echo '<a href="search.html">'.'<font size = "3">'.'返回'. '</font>'.'</a>';
 				exit;
 			}
-*/
+
 	}
 	$db ->close();
 }

@@ -12,9 +12,9 @@ $password =trim($_POST["password"]);
 
 if(!empty($dn) && !empty($password) ){
     //local server
-    //$ldapconn = ldap_connect('10.228.100.3',389);
+    $ldapconn = ldap_connect('10.228.100.3',389);
     //remote server
-    $ldapconn = ldap_connect('111.38.178.170',50389);
+    //$ldapconn = ldap_connect('111.38.178.170',50389);
     @$ldapbind = ldap_bind($ldapconn,$dn,$password);
 
     //connect to database
