@@ -16,7 +16,7 @@ if (isset($_SESSION['valie_user'])){
 	$checked_name = $_POST['checked_name'];
 	@ $db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 	for($i = 0; $i < count($checked_name); $i++){
-
+		$s = count($checked_name);
 	if(isset($_POST['delete_button'])){
 		$query = "DELETE FROM `postdata` WHERE `id`='".$checked_name[$i]."'";
 		$result = $db->query($query);
@@ -56,8 +56,8 @@ if (isset($_SESSION['valie_user'])){
     echo   '<script language="javascript">'.'window.location= "update.php";'.'</script>';
 
 	
-			}
-			else{
+			}elseif(isset($_POST['update_button']) && count($checked_name)>1) {
+
 				echo "请勿选择多列数据进行修改";
 				echo '</br>';
 				echo '<a href="search.html">'.'<font size = "3">'.'返回'. '</font>'.'</a>';
@@ -66,4 +66,7 @@ if (isset($_SESSION['valie_user'])){
 
 	}
 	$db ->close();
+}else{
+        echo   '<script language="javascript">'.'window.location= "error.html";'.'</script>';
+
 }
