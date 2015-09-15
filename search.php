@@ -59,15 +59,15 @@
 	//添加权限判断
 	if ($_COOKIE['privilege'] >1) {
 
-	$query = "SELECT * FROM `postdata` WHERE `insert_date`BETWEEN '$insert_date_from' AND '$insert_date_to' and `date`BETWEEN '$date_from' AND '$date_to'  and `type` like '%".$type."%' and `company` like '%".$company."%' and `reason` like '%".$reason."%' and `money` like '%".$money."%' and `state` like '%".$state."%'";
+	$query = "SELECT * FROM `postdata` WHERE `insert_date`BETWEEN '$insert_date_from' AND '$insert_date_to' and `date`BETWEEN '$date_from' AND '$date_to'  and `type` like '%".$type."%' and `company` like '%".$company."%' and `reason` like '%".$reason."%' and `money` like '%".$money."%' and `state` like '%".$state."%' and `item_status`='1'";
 	//echo $query;
-    $sum_query = "SELECT sum(money) FROM `postdata` WHERE  `insert_date`BETWEEN '$insert_date_from' AND '$insert_date_to' and `date`BETWEEN '$date_from' AND '$date_to' and `type` like '%".$type."%' and `company` like '%".$company."%' and `reason` like '%".$reason."%' and `money` like '%".$money."%' and `state` like '%".$state."%'";
+    $sum_query = "SELECT sum(money) FROM `postdata` WHERE  `insert_date`BETWEEN '$insert_date_from' AND '$insert_date_to' and `date`BETWEEN '$date_from' AND '$date_to' and `type` like '%".$type."%' and `company` like '%".$company."%' and `reason` like '%".$reason."%' and `money` like '%".$money."%' and `state` like '%".$state."%' and `item_status`='1'";
     //echo '------'.$sum_query.'-----';
 	}else{
 
-	$query = "SELECT * FROM `postdata` WHERE `userID`= ".$userID." and  `insert_date`BETWEEN '$insert_date_from' AND '$insert_date_to' and `date`BETWEEN '$date_from' AND '$date_to'  and `type` like '%".$type."%' and `company` like '%".$company."%' and `reason` like '%".$reason."%' and `money` like '%".$money."%' and `state` like '%".$state."%'";
+	$query = "SELECT * FROM `postdata` WHERE `userID`= ".$userID." and  `insert_date`BETWEEN '$insert_date_from' AND '$insert_date_to' and `date`BETWEEN '$date_from' AND '$date_to'  and `type` like '%".$type."%' and `company` like '%".$company."%' and `reason` like '%".$reason."%' and `money` like '%".$money."%' and `state` like '%".$state."%' and `item_status`='1'";
 	//echo $query;
-    $sum_query = "SELECT sum(money) FROM  `postdata` WHERE `userID`= ".$userID." and  `insert_date`BETWEEN '$insert_date_from' AND '$insert_date_to' and `date`BETWEEN '$date_from' AND '$date_to' and `type` like '%".$type."%' and `company` like '%".$company."%' and `reason` like '%".$reason."%' and `money` like '%".$money."%' and `state` like '%".$state."%'";
+    $sum_query = "SELECT sum(money) FROM  `postdata` WHERE `userID`= ".$userID." and  `insert_date`BETWEEN '$insert_date_from' AND '$insert_date_to' and `date`BETWEEN '$date_from' AND '$date_to' and `type` like '%".$type."%' and `company` like '%".$company."%' and `reason` like '%".$reason."%' and `money` like '%".$money."%' and `state` like '%".$state."%' and `item_status`='1'";
 
 	}
 	

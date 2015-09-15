@@ -18,7 +18,7 @@ if (isset($_SESSION['valie_user'])){
 	for($i = 0; $i < count($checked_name); $i++){
 		$s = count($checked_name);
 	if(isset($_POST['delete_button'])){
-		$query = "DELETE FROM `postdata` WHERE `id`='".$checked_name[$i]."'";
+		$query = "UPDATE `postdata` SET `item_status`='0' WHERE `id`='".$checked_name[$i]."'";
 		$result = $db->query($query);
 		if ($result) {
 		  echo $checked_name[$i].' 删除成功！</br>';
@@ -31,7 +31,7 @@ if (isset($_SESSION['valie_user'])){
 		$update_result = $db->query($update_query);
 		$num_update_result =$update_result ->num_rows;
 		   for ($i=0; $i < $num_update_result; $i++) { 
-         $row = $update_result ->fetch_assoc();        
+        $row = $update_result ->fetch_assoc();        
         $id = stripcslashes($row['id']);
         $date = stripcslashes($row['date']);
         $type = stripcslashes($row['type']);
