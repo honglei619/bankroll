@@ -238,7 +238,7 @@
 		 		echo '';
 		 		echo '</td>';
 		 		echo '<td>';
-		 		echo $sum['sum(money)'];
+		 		echo round($sum['sum(money)'],2);
 		 		echo '</td>';
 		 		echo '<td>';
 		 		echo '';
@@ -271,7 +271,7 @@
 		 		echo '';
 		 		echo '</td>';
 		 		echo '<td>';
-		 		echo $sum['sum(money)'];
+		 		echo round($sum['sum(money)'],2);
 		 		echo '</td>';
 		 		echo '<td>';
 		 		echo '';
