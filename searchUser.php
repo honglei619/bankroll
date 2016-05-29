@@ -31,10 +31,10 @@ require("navigation.html");
         <thead>
             <tr>
             	<th>
-
+                标签
                 </th>            	
                 <th>
-                   ID
+                   序号
                 </th>            
             	<th>
                    登陆名称

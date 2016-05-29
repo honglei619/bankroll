@@ -1,12 +1,8 @@
 <head><meta charset="utf-8" /></head>
 <head>
-	<title>首页</title>
-	&nbsp;
-
-		<link href="css/nav.css" rel="stylesheet" type="text/css" />
-
+<title>首页</title>
+<link href="css/nav.css" rel="stylesheet" type="text/css" />
 </head>
-
 <?php
 session_start();
 date_default_timezone_set("Asia/Shanghai");

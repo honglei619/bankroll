@@ -9,6 +9,7 @@ body{
 	color:#333;
 	text-shadow:1px 1px 1px #fff;
 	overflow-x:hidden;
+    margin:0
 }
 h1{
 	font-size:30px;
